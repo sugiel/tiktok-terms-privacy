@@ -1,17 +1,74 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trend Pakaian Anak TikTok</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trend Analysis Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; background: #f9f9f9; }
+    h1 { color: #333; }
+    button { padding: 10px 20px; background: #25F4EE; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    button:hover { background: #0bd4c0; }
+    table { margin-top: 20px; border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background: #eee; }
+  </style>
 </head>
 <body>
-<h1>Selamat Datang di Aplikasi Trend Pakaian Anak TikTok</h1>
-<p>Gunakan menu di atas untuk mengakses Terms of Service dan Privacy Policy.</p>
-<ul>
-<li><a href="terms.html">Terms of Service</a></li>
-<li><a href="privacy.html">Privacy Policy</a></li>
-</ul>
+  <h1>Trend Analysis Demo</h1>
+  <p>Demo integrasi TikTok API untuk analisa tren pakaian anak usia 2–8 tahun.</p>
+  <button onclick="fetchData()">Fetch TikTok Trends</button>
+
+  <table id="trendTable" style="display:none;">
+    <thead>
+      <tr>
+        <th>Video</th>
+        <th>Model</th>
+        <th>Link Produk</th>
+        <th>Harga</th>
+        <th>Qty Terjual</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    function fetchData() {
+      const dummyData = [
+        {
+          video: "https://www.tiktok.com/@seller/video/123",
+          model: "Denim Jacket Anak",
+          link: "https://www.tiktokglobalshop.com/product/denim123",
+          harga: "Rp 150.000",
+          qty: "1.200"
+        },
+        {
+          video: "https://www.tiktok.com/@seller/video/456",
+          model: "Dress Bunga Anak",
+          link: "https://www.tiktokglobalshop.com/product/dress456",
+          harga: "Rp 120.000",
+          qty: "980"
+        }
+      ];
+
+      const table = document.getElementById("trendTable");
+      const tbody = table.querySelector("tbody");
+      tbody.innerHTML = "";
+
+      dummyData.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><a href="${item.video}" target="_blank">Video</a></td>
+          <td>${item.model}</td>
+          <td><a href="${item.link}" target="_blank">Link Produk</a></td>
+          <td>${item.harga}</td>
+          <td>${item.qty}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      table.style.display = "table";
+    }
+  </script>
 </body>
 </html>
